@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Message from './components/Message';
 
-function App() {
+const myMessage = {
+  title: "Тут первое сообщение",
+  text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odio in vero illo. Hic nam aliquam commodi fuga voluptate molestiae soluta quisquam consectetur necessitatibus reiciendis!",
+  author: "",
+  date: "2021.11.26",
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Message message={myMessage}/>
     </div>
   );
 }
