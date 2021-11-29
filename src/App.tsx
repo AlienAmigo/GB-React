@@ -1,18 +1,53 @@
-import React from 'react';
-import './App.css';
-import Message from './components/Message';
-
-const myMessage = {
-  title: "Тут первое сообщение",
-  text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore odio in vero illo. Hic nam aliquam commodi fuga voluptate molestiae soluta quisquam consectetur necessitatibus reiciendis!",
-  author: "",
-  date: "2021.11.26",
-};
+import { useState, useCallback, useEffect } from 'react';
+import './App.scss';
+import MessageForm from './components/MessageForm';
+import MessageList from './components/MessageList';
 
 const App = () => {
+
+  interface IMessage {
+    title?: string,
+    text: string,
+    date?: string,
+    author?: string,
+    isAuthorHuman?: boolean,
+    isAnswer?: boolean,
+  }
+
+  const [messageList, setMessageList] = useState([]);
+
+  const robotMessage = "Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!";
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      ((messageList[messageList.length - 1] as IMessage)?.isAuthorHuman === false && (messageList[messageList.length - 1] as IMessage)?.isAnswer !== true) &&
+        addMessage({
+          text: robotMessage,
+          isAnswer: true,
+          isAuthorHuman: false,
+        });
+    }, 1500);
+
+    return () => {
+     clearTimeout(timerId);
+    }
+
+  }, [messageList])
+
+  const addMessage = useCallback((message: IMessage) => {
+    setMessageList((state) => {
+      const copyState = [...state];
+      copyState.push(message as never);
+      return copyState;
+    });
+  }, []);
+
   return (
     <div className="App">
-      <Message message={myMessage}/>
+      <div className="messager-wrapper">
+        <MessageList messageList={messageList} />
+        <MessageForm addMessage={addMessage} />
+      </div>
     </div>
   );
 }
