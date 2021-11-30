@@ -1,14 +1,8 @@
 import './style.scss';
+import { IMessage } from 'types';
 
 interface IProps {
-  message: {
-    title?: string,
-    text: string,
-    date?: string,
-    author?: string,
-    isAuthorHuman?: boolean,
-    isAnswer?: boolean,
-  }
+  message: IMessage
 }
 
 const Message = (props: IProps) => {
