@@ -10,13 +10,9 @@ const App = () => {
 
   const robotMessage = "Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!";
 
-  const addMessage = useCallback((message: IMessage) => {
-    setMessageList((state) => {
-      const copyState = [...state];
-      copyState.push(message as never);
-      return copyState;
-    });
-  }, []);
+  const addMessage = useCallback((message: IMessage) =>
+    setMessageList((state) => [...state, message as never])
+    , []);
 
   useEffect(() => {
     let lastMessage = messageList[messageList.length - 1];
