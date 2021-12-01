@@ -6,3 +6,9 @@ export interface IMessage {
   isAuthorHuman?: boolean,
   isAnswer?: boolean,
 }
+
+export interface IMessageList {
+  messageList: [
+    IMessage
+  ]
+}

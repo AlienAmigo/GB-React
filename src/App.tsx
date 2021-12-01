@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="messager-wrapper">
-        <MessageList messageList={messageList} />
+        <MessageList messageList={messageList as never} />
         <MessageForm addMessage={addMessage} />
       </div>
     </div>
