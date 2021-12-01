@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 import './App.scss';
-import MessageForm from './components/MessageForm';
-import MessageList from './components/MessageList';
-import { IMessage } from './types';
+import MessageForm from 'components/MessageForm';
+import MessageList from 'components/MessageList';
+import { IMessage } from 'types';
 
 const App = () => {
 
