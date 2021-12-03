@@ -6,19 +6,17 @@ interface IProps {
   message: IMessage;
 }
 
-const Message = (props: IProps) => {
+const Message = ({ message }: IProps) => {
   return (
-    <div className={`message ${props.message.isAnswer ? 'message--robot' : ''}`}>
-      {props.message.title && <div className="message__title">{props.message.title}</div>}
-      <div className="message__text">{props.message.text}</div>
-      {!props.message.isAnswer && (
+    <div className={`message ${message.isAnswer ? 'message--robot' : ''}`}>
+      {message.title && <div className="message__title">{message.title}</div>}
+      <div className="message__text">{message.text}</div>
+      {!message.isAnswer && (
         <div className="message__author">
-          {props.message.isAuthorHuman ? 'Неизвестный автор' : 'Сообщение от бота'}
+          {message.isAuthorHuman ? 'Неизвестный автор' : 'Сообщение от бота'}
         </div>
       )}
-      {props.message.date && !props.message.isAnswer && (
-        <div className="message__date">{props.message.date}</div>
-      )}
+      {message.date && !message.isAnswer && <div className="message__date">{message.date}</div>}
     </div>
   );
 };

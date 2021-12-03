@@ -23,6 +23,23 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
-      }
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "react/prop-types": "off",
+        "@typescript-eslint/no-use-before-define": "warn",
+        "no-use-before-define": "off",
+        "import/extensions": "off",
+        "react/function-component-definition": "warn",
+        "no-unused-vars": "warn"
+      },
+    "settings": {
+        "import/resolver": {
+        "node": {
+            "paths": ["src"],
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
 }

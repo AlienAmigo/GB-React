@@ -3,8 +3,9 @@ import './style.scss';
 import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { IMessage, IMessageList } from 'types';
 
-const MessageForm = (props: any) => {
+const MessageForm = ({ messageList, addMessage }: IMessageList) => {
   const [value, setValue] = useState('');
 
   const isAuthorHuman = (): boolean =>
@@ -16,7 +17,7 @@ const MessageForm = (props: any) => {
       return;
     }
     setValue('');
-    props.addMessage({
+    messageList.addMessage({
       text: value,
       isAuthorHuman: isAuthorHuman(),
       date: ''
@@ -40,7 +41,7 @@ const MessageForm = (props: any) => {
         value={value.toString()}
         className="message-form__textarea"
         onChange={onChange}
-      ></TextField>
+      />
       <Button type="submit" className="message-form__submit-btn">
         Отправить
       </Button>

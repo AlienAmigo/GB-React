@@ -1,8 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './App.scss';
 import MessageForm from 'components/MessageForm';
 import MessageList from 'components/MessageList';
-import { IMessage } from 'types';
+import { IMessage, IMessageList } from 'types';
 
 const App = () => {
   const [messageList, setMessageList] = useState([]);
@@ -16,15 +16,18 @@ const App = () => {
   );
 
   useEffect(() => {
-    let lastMessage = messageList[messageList.length - 1];
+    const lastMessage = messageList[messageList.length - 1];
     const timerId = setTimeout(() => {
-      (lastMessage as IMessage)?.isAuthorHuman === false &&
-        (lastMessage as IMessage)?.isAnswer !== true &&
+      if (
+        (lastMessage as IMessage)?.isAuthorHuman === false &&
+        (lastMessage as IMessage)?.isAnswer !== true
+      ) {
         addMessage({
           text: robotMessage,
           isAnswer: true,
           isAuthorHuman: false
         });
+      }
     }, 1500);
 
     return () => {
@@ -36,7 +39,7 @@ const App = () => {
     <div className="App">
       <div className="messager-wrapper">
         <MessageList messageList={messageList as never} />
-        <MessageForm addMessage={addMessage} />
+        <MessageForm addMessage={addMessage as (message: IMessage) => void} />
       </div>
     </div>
   );

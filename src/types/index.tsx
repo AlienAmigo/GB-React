@@ -9,4 +9,5 @@ export interface IMessage {
 
 export interface IMessageList {
   messageList: [IMessage];
+  addMessage?: (message: IMessage) => void;
 }
