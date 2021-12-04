@@ -32,7 +32,8 @@
         "no-use-before-define": "off",
         "import/extensions": "off",
         "react/function-component-definition": "warn",
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        "react/destructuring-assignment": "warn"
       },
     "settings": {
         "import/resolver": {

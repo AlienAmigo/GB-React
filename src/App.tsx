@@ -2,7 +2,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import './App.scss';
 import MessageForm from 'components/MessageForm';
 import MessageList from 'components/MessageList';
-import { IMessage, IMessageList } from 'types';
+import ChartList from 'components/ChartList';
+import { IMessage } from 'types';
 
 const App = () => {
   const [messageList, setMessageList] = useState([]);
@@ -26,7 +27,7 @@ const App = () => {
           text: robotMessage,
           isAnswer: true,
           isAuthorHuman: false
-        });
+        } as never);
       }
     }, 1500);
 
@@ -37,9 +38,10 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* <ChartList /> */}
       <div className="messager-wrapper">
         <MessageList messageList={messageList as never} />
-        <MessageForm addMessage={addMessage as (message: IMessage) => void} />
+        <MessageForm addMessage={addMessage as any} />
       </div>
     </div>
   );

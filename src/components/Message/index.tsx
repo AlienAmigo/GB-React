@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import { IMessage } from 'types';
+import ListItem from '@mui/material/ListItem';
 
 interface IProps {
   message: IMessage;

@@ -3,9 +3,8 @@ import './style.scss';
 import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { IMessage, IMessageList } from 'types';
 
-const MessageForm = ({ messageList, addMessage }: IMessageList) => {
+const MessageForm = (props: any) => {
   const [value, setValue] = useState('');
 
   const isAuthorHuman = (): boolean =>
@@ -17,7 +16,7 @@ const MessageForm = ({ messageList, addMessage }: IMessageList) => {
       return;
     }
     setValue('');
-    messageList.addMessage({
+    props.messageList?.addMessage({
       text: value,
       isAuthorHuman: isAuthorHuman(),
       date: ''
@@ -30,21 +29,21 @@ const MessageForm = ({ messageList, addMessage }: IMessageList) => {
 
   return (
     <form id="" action="" method="" className="message-form" onSubmit={onSubmit}>
-      <TextField
+      <textarea
         name=""
         id=""
         // ref={}
         aria-label="empty textarea"
-        multiline
+        // multiline
         rows={2}
         placeholder="Введите сообщение"
         value={value.toString()}
         className="message-form__textarea"
         onChange={onChange}
       />
-      <Button type="submit" className="message-form__submit-btn">
+      <button type="submit" className="message-form__submit-btn">
         Отправить
-      </Button>
+      </button>
     </form>
   );
 };
