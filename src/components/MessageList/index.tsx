@@ -7,10 +7,10 @@ import { nanoid } from 'nanoid';
 
 const MessageList = ({ messageList }: IMessageList) => {
   return (
-    <div className="message-list">
+    <List className="message-list">
       {messageList &&
         messageList.map((item: IMessage) => <Message key={nanoid()} message={item} />)}
-    </div>
+    </List>
   );
 };
 

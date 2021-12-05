@@ -9,7 +9,7 @@ interface IProps {
 
 const Message = ({ message }: IProps) => {
   return (
-    <div className={`message ${message.isAnswer ? 'message--robot' : ''}`}>
+    <ListItem className={`message ${message.isAnswer ? 'message--robot' : ''}`}>
       {message.title && <div className="message__title">{message.title}</div>}
       <div className="message__text">{message.text}</div>
       {!message.isAnswer && (
@@ -18,7 +18,7 @@ const Message = ({ message }: IProps) => {
         </div>
       )}
       {message.date && !message.isAnswer && <div className="message__date">{message.date}</div>}
-    </div>
+    </ListItem>
   );
 };
 

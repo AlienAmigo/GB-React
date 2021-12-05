@@ -1,8 +1,7 @@
-import React, { FormEvent, useState } from 'react';
-import './style.scss';
+import React, { FormEvent, useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import { TextField, Button } from '@mui/material/';
+import './style.scss';
 
 const MessageForm = (props: any) => {
   const [value, setValue] = useState('');
@@ -16,34 +15,43 @@ const MessageForm = (props: any) => {
       return;
     }
     setValue('');
-    props.messageList?.addMessage({
+    props.addMessage({
       text: value,
       isAuthorHuman: isAuthorHuman(),
       date: ''
     });
   };
 
-  const onChange = (ev: React.ChangeEvent<HTMLTextAreaElement>): void => {
+  const onChange = (ev: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(ev.target.value);
   };
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+
   return (
     <form id="" action="" method="" className="message-form" onSubmit={onSubmit}>
-      <textarea
+      <TextField
         name=""
         id=""
-        // ref={}
+        type="text"
+        inputRef={inputRef}
         aria-label="empty textarea"
-        // multiline
+        multiline
         rows={2}
         placeholder="Введите сообщение"
         value={value.toString()}
         className="message-form__textarea"
         onChange={onChange}
       />
-      <button type="submit" className="message-form__submit-btn">
+      <Button type="submit" className="message-form__submit-btn">
         Отправить
-      </button>
+      </Button>
     </form>
   );
 };

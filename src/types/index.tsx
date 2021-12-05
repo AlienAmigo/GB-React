@@ -5,10 +5,8 @@ export interface IMessage {
   author?: string;
   isAuthorHuman?: boolean;
   isAnswer?: boolean;
-  // addMessage?: () => void;
 }
 
 export interface IMessageList {
   messageList?: [IMessage];
-  addMessage?: (message: IMessage) => void;
 }

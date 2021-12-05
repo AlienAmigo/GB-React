@@ -1,16 +1,17 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { List, ListItem } from '@mui/material';
 import ChartListMock from './mock';
 
 const ChartList = () => {
   return (
-    <div>
+    <List>
       {ChartListMock.map((item) => (
-        <div id={item.id.toString()} key={nanoid()}>
+        <ListItem id={item.id.toString()} key={nanoid()}>
           {item.name}
-        </div>
+        </ListItem>
       ))}
-    </div>
+    </List>
   );
 };
 

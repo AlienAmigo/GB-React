@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <ChartList /> */}
+      <ChartList />
       <div className="messager-wrapper">
         <MessageList messageList={messageList as never} />
         <MessageForm addMessage={addMessage as any} />
