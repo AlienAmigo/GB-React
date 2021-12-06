@@ -4,7 +4,7 @@ export interface IMessage {
   date?: string;
   author?: string;
   isAuthorHuman?: boolean;
-  isAnswer?: boolean;
+  isRobot?: boolean;
 }
 
 export interface IMessageList {

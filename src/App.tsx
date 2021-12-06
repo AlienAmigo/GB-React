@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import './App.scss';
 import MessageForm from 'components/MessageForm';
 import MessageList from 'components/MessageList';
-import ChartList from 'components/ChartList';
+import ChartList from 'components/ChatList';
+import { AppBox, MessageBox } from 'components/AppWrapper/style';
 import { IMessage } from 'types';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     'Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!';
 
   const addMessage = useCallback(
-    (message: IMessage) => setMessageList((state) => [...state, message as never]),
+    (message: IMessage) => setMessageList(state => [...state, message as never]),
     []
   );
 
@@ -21,11 +21,11 @@ const App = () => {
     const timerId = setTimeout(() => {
       if (
         (lastMessage as IMessage)?.isAuthorHuman === false &&
-        (lastMessage as IMessage)?.isAnswer !== true
+        (lastMessage as IMessage)?.isRobot !== true
       ) {
         addMessage({
           text: robotMessage,
-          isAnswer: true,
+          isRobot: true,
           isAuthorHuman: false
         } as never);
       }
@@ -37,13 +37,13 @@ const App = () => {
   }, [messageList, addMessage]);
 
   return (
-    <div className="App">
+    <AppBox>
       <ChartList />
-      <div className="messager-wrapper">
+      <MessageBox>
         <MessageList messageList={messageList as never} />
         <MessageForm addMessage={addMessage as any} />
-      </div>
-    </div>
+      </MessageBox>
+    </AppBox>
   );
 };
 

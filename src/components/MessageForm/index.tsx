@@ -1,7 +1,7 @@
 import React, { FormEvent, useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { TextField, Button } from '@mui/material/';
-import './style.scss';
+import { StyledTextField, StyledFormGroup, StyledButton } from './style';
 
 const MessageForm = (props: any) => {
   const [value, setValue] = useState('');
@@ -36,22 +36,24 @@ const MessageForm = (props: any) => {
 
   return (
     <form id="" action="" method="" className="message-form" onSubmit={onSubmit}>
-      <TextField
-        name=""
-        id=""
-        type="text"
-        inputRef={inputRef}
-        aria-label="empty textarea"
-        multiline
-        rows={2}
-        placeholder="Введите сообщение"
-        value={value.toString()}
-        className="message-form__textarea"
-        onChange={onChange}
-      />
-      <Button type="submit" className="message-form__submit-btn">
-        Отправить
-      </Button>
+      <StyledFormGroup>
+        <StyledTextField
+          name=""
+          id=""
+          type="text"
+          inputRef={inputRef}
+          aria-label="empty textarea"
+          multiline
+          rows={2}
+          placeholder="Введите сообщение"
+          value={value.toString()}
+          className="message-form__textarea"
+          onChange={onChange}
+        />
+        <StyledButton type="submit" className="message-form__submit-btn">
+          Отправить
+        </StyledButton>
+      </StyledFormGroup>
     </form>
   );
 };
