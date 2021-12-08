@@ -1,49 +1,31 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import MessageForm from 'components/MessageForm';
-import MessageList from 'components/MessageList';
-import ChartList from 'components/ChatList';
-import { AppBox, MessageBox } from 'components/AppWrapper/style';
-import { IMessage } from 'types';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import Profile from 'views/Profile';
+import Chats from 'views/Chats';
+import Home from 'views/Home';
 
 const App = () => {
-  const [messageList, setMessageList] = useState([]);
-
-  const robotMessage =
-    'Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!';
-
-  const addMessage = useCallback(
-    (message: IMessage) => setMessageList(state => [...state, message as never]),
-    []
-  );
-
-  useEffect(() => {
-    const lastMessage = messageList[messageList.length - 1];
-    const timerId = setTimeout(() => {
-      if (
-        (lastMessage as IMessage)?.isAuthorHuman === false &&
-        (lastMessage as IMessage)?.isRobot !== true
-      ) {
-        addMessage({
-          text: robotMessage,
-          isRobot: true,
-          isAuthorHuman: false
-        } as never);
-      }
-    }, 1500);
-
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [messageList, addMessage]);
-
   return (
-    <AppBox>
-      <ChartList />
-      <MessageBox>
-        <MessageList messageList={messageList as never} />
-        <MessageForm addMessage={addMessage as any} />
-      </MessageBox>
-    </AppBox>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li className="">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="">
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li className="">
+            <Link to="/chats">Chats</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route component={Profile} path="/profile" />
+        <Route component={Chats} path="/chats" />
+        <Route component={Home} path="/" />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
