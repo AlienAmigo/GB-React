@@ -1,7 +1,7 @@
 import { List } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const StyledList = styled(List)<{ isActive?: boolean }>`
+const StyledList = styled(List)`
   display: flex;
   flex-direction: column;
   gap: 10px;
