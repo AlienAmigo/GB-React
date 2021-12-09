@@ -1,5 +1,7 @@
 import { styled, css } from '@mui/material/styles';
 
-const STYLES = {};
+const COLORS = {
+  BACK: '#191919'
+};
 
-export default STYLES;
+export default COLORS;

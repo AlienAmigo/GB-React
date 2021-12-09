@@ -1,6 +1,5 @@
-import React, { FormEvent, useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import { TextField, Button } from '@mui/material/';
+import React, { FormEvent, useState, useEffect, useRef, ReactNode } from 'react';
+import { IAddMessageFunc } from 'types';
 import { StyledTextField, StyledFormGroup, StyledButton } from './style';
 
 const MessageForm = (props: any) => {
@@ -15,7 +14,7 @@ const MessageForm = (props: any) => {
       return;
     }
     setValue('');
-    props.addMessage({
+    props.addMessageFunc({
       text: value,
       isAuthorHuman: isAuthorHuman(),
       date: ''

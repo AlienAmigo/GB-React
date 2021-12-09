@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import StyledChatItem from './style';
@@ -12,7 +13,10 @@ interface IProps {
 // TODO: сделать Активный чат
 const ChatItem: React.FC<IProps> = ({ children, ...props }) => (
   <StyledChatItem isActive={props.isActive}>
-    {!props.isActive ? <ChatBubbleIcon /> : <ChatBubbleOutlineIcon />} {children}
+    <Link to={`/chats/${props.id}`}>
+      {!props.isActive ? <ChatBubbleIcon /> : <ChatBubbleOutlineIcon />}
+      {children}
+    </Link>
   </StyledChatItem>
 );
 

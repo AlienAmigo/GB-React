@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import MessageForm from 'components/MessageForm';
-import MessageList from 'components/MessageList';
+import { Route, Switch, useParams } from 'react-router-dom';
+import Messages from 'components/Messages';
 import ChartList from 'components/ChatList';
-import { AppBox, MessageBox } from 'components/AppWrapper/style';
-import { IMessage } from 'types';
+import { IMessage, IAddMessageFunc } from 'types';
+import ChartListMock from 'components/ChatList/mock';
+import StyledChats from './style';
 
-const Chats = function () {
+const Chats: React.FC = () => {
   const [messageList, setMessageList] = useState([]);
 
   const robotMessage =
@@ -37,13 +38,16 @@ const Chats = function () {
   }, [messageList, addMessage]);
 
   return (
-    <AppBox>
-      <ChartList />
-      <MessageBox>
-        <MessageList messageList={messageList as never} />
-        <MessageForm addMessage={addMessage as any} />
-      </MessageBox>
-    </AppBox>
+    <StyledChats>
+      <ChartList list={ChartListMock} />
+      <Messages addMessageFunc={addMessage} />;
+      <Switch>
+        {/* <Route>
+          {({ addMessageFunc }: IAddMessageFunc) => {
+          }}
+        </Route> */}
+      </Switch>
+    </StyledChats>
   );
 };
 

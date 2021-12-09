@@ -10,3 +10,7 @@ export interface IMessage {
 export interface IMessageList {
   messageList?: [IMessage];
 }
+
+export interface IAddMessageFunc {
+  addMessageFunc: (message: IMessage) => void;
+}

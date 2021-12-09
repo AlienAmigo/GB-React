@@ -10,6 +10,17 @@ const StyledChatItem = styled(ListItem)<{ isActive?: boolean }>`
   opacity: 0.5;
   transition: opacity 0.25s ease-in;
 
+  & a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+
+    &:visited {
+      color: #ffffff;
+    }
+  }
+
   &:hover {
     opacity: 0.75;
   }

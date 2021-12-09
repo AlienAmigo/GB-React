@@ -33,7 +33,8 @@
         "import/extensions": "off",
         "react/function-component-definition": "warn",
         "no-unused-vars": "warn",
-        "react/destructuring-assignment": "warn"
+        "react/destructuring-assignment": "warn",
+        "react/no-children-prop": "warn"
       },
     "settings": {
         "import/resolver": {
