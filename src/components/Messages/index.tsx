@@ -2,14 +2,14 @@ import React from 'react';
 import { MessagesBox } from 'components/AppWrapper/style';
 import MessageList from 'components/MessageList';
 import MessageForm from 'components/MessageForm';
-import { IMessageList, IAddMessageFunc } from 'types';
+import { IMessageList, IAddMessage } from 'types';
 import { useParams } from 'react-router-dom';
 
-const Messages = ({ messageList, addMessageFunc }: IMessageList & IAddMessageFunc) => {
+const Messages = ({ messageList, addMessage }: IMessageList & IAddMessage) => {
   return (
     <MessagesBox>
       <MessageList messageList={messageList as never} />
-      <MessageForm addMessageFunc={addMessageFunc} />
+      <MessageForm addMessage={addMessage} />
     </MessagesBox>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Route, Switch, useParams } from 'react-router-dom';
 import Messages from 'components/Messages';
 import ChartList from 'components/ChatList';
-import { IMessage, IAddMessageFunc } from 'types';
+import { IMessage, IAddMessage } from 'types';
 import ChartListMock from 'components/ChatList/mock';
 import StyledChats from './style';
 
@@ -40,13 +40,7 @@ const Chats: React.FC = () => {
   return (
     <StyledChats>
       <ChartList list={ChartListMock} />
-      <Messages addMessageFunc={addMessage} />;
-      <Switch>
-        {/* <Route>
-          {({ addMessageFunc }: IAddMessageFunc) => {
-          }}
-        </Route> */}
-      </Switch>
+      <Messages addMessage={addMessage} />;
     </StyledChats>
   );
 };

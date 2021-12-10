@@ -2,7 +2,7 @@
 export enum ROUTERS {
   BASE = '/',
   PROFILE = '/profile',
-  CHARTS = '/charts'
+  CHATS = '/chats'
 }
 
 export const MenuItems = [
@@ -15,7 +15,7 @@ export const MenuItems = [
     link: ROUTERS.PROFILE
   },
   {
-    title: 'Charts',
-    link: ROUTERS.CHARTS
+    title: 'Chats',
+    link: ROUTERS.CHATS
   }
 ];

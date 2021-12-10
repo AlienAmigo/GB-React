@@ -16,8 +16,10 @@ const App = () => {
         <ContentBox>
           <Switch>
             <Route component={Profile} path={ROUTERS.PROFILE} />
-            <Route component={Chats} path={ROUTERS.CHARTS} />
-            <Route path={`${ROUTERS.CHARTS}/:chatId`} children={<Chats />} />
+            <Route component={Chats} path={ROUTERS.CHATS} />
+            <Route path={`${ROUTERS.CHATS}/:chatId`}>
+              <Chats />
+            </Route>
             <Route component={Home} exact path={ROUTERS.BASE} />
             <Route component={NotMatch} path="*" />
           </Switch>

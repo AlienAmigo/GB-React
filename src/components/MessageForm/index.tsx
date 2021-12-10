@@ -1,8 +1,8 @@
 import React, { FormEvent, useState, useEffect, useRef, ReactNode } from 'react';
-import { IAddMessageFunc } from 'types';
+import { IAddMessage } from 'types';
 import { StyledTextField, StyledFormGroup, StyledButton } from './style';
 
-const MessageForm = ({ addMessageFunc }: IAddMessageFunc) => {
+const MessageForm = ({ addMessage }: IAddMessage) => {
   const [value, setValue] = useState('');
 
   const isAuthorHuman = (): boolean =>
@@ -14,7 +14,7 @@ const MessageForm = ({ addMessageFunc }: IAddMessageFunc) => {
       return;
     }
     setValue('');
-    addMessageFunc({
+    addMessage({
       text: value,
       isAuthorHuman: isAuthorHuman(),
       date: ''

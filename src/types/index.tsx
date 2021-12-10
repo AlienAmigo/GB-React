@@ -11,6 +11,6 @@ export interface IMessageList {
   messageList?: [IMessage];
 }
 
-export interface IAddMessageFunc {
-  addMessageFunc: (message: IMessage) => void;
+export interface IAddMessage {
+  addMessage: (message: IMessage) => void;
 }
