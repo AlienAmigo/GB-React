@@ -1,6 +1,6 @@
 import { ListItem, styled, css } from '@mui/material';
 
-const StyledChatItem = styled(ListItem)<{ isActive?: boolean }>`
+const StyledChatItem = styled(ListItem)`
   display: flex;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0);
@@ -30,17 +30,15 @@ const StyledChatItem = styled(ListItem)<{ isActive?: boolean }>`
     margin-right: 7px;
   }
 
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      background-color: #2b2c32;
-      cursor: default;
-      opacity: 1;
+  & a.active {
+    background-color: #2b2c32;
+    cursor: default;
+    opacity: 1;
 
-      &:hover {
-        opacity: 1;
-      }
-    `}
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 export default StyledChatItem;

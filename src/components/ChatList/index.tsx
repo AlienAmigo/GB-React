@@ -15,7 +15,7 @@ const ChatList = function ({ list }: IProps) {
   return (
     <StyledList>
       {list.map(item => (
-        <ChatItem id={item.id.toString()} key={nanoid()} isActive={!item.id}>
+        <ChatItem id={item.id.toString()} key={nanoid()}>
           {item.name}
         </ChatItem>
       ))}
