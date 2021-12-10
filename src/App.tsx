@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppBox, ContentBox } from 'components/AppWrapper/style';
 import Profile from 'views/Profile';
 import Chats from 'views/Chats';
@@ -17,9 +17,6 @@ const App = () => {
           <Switch>
             <Route component={Profile} path={ROUTERS.PROFILE} />
             <Route component={Chats} path={ROUTERS.CHATS} />
-            <Route path={`${ROUTERS.CHATS}/:chatId`}>
-              <Chats />
-            </Route>
             <Route component={Home} exact path={ROUTERS.BASE} />
             <Route component={NotMatch} path="*" />
           </Switch>

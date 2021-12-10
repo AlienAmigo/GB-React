@@ -2,7 +2,6 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import ChatItem from 'components/ChatItem';
 import StyledList from './style';
-import ChartListMock from './mock';
 
 interface IProps {
   list: {
@@ -11,7 +10,7 @@ interface IProps {
   }[];
 }
 
-const ChatList = function ({ list }: IProps) {
+const ChatList = ({ list }: IProps) => {
   return (
     <StyledList>
       {list.map(item => (

@@ -13,7 +13,7 @@ const Navigation = () => {
         <Toolbar className="navigation__toolbar">
           <nav>
             <ul>
-              {MenuItems.map((item, index) => (
+              {MenuItems.map(item => (
                 <NavigationItem key={nanoid()} title={item.title} link={item.link} />
               ))}
             </ul>

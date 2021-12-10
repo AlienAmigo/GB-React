@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useEffect, useRef, ReactNode } from 'react';
+import React, { FormEvent, useState, useEffect, useRef } from 'react';
 import { IAddMessage } from 'types';
 import { StyledTextField, StyledFormGroup, StyledButton } from './style';
 

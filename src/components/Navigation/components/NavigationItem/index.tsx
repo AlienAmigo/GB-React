@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import StyledNavigationItem from './style';
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
 
 const NavigationItem = ({ title, link }: IProps) => {
   return (
-    <StyledNavigationItem className="navigation__item">
+    <StyledNavigationItem>
       <NavLink to={link} activeClassName="active">
         {title}
       </NavLink>
