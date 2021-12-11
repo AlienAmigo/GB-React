@@ -34,7 +34,10 @@
         "react/function-component-definition": "warn",
         "no-unused-vars": "warn",
         "react/destructuring-assignment": "warn",
-        "react/no-children-prop": "warn"
+        "react/no-children-prop": "warn",
+        "import/prefer-default-export": "warn",
+        "no-underscore-dangle": "off",
+        "default-param-last": "warn"
       },
     "settings": {
         "import/resolver": {
