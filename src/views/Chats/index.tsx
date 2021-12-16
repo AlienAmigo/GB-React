@@ -5,49 +5,72 @@ import ChartList from 'components/ChatList';
 import { IMessage, IMessageList } from 'types';
 import ChartListMock from 'components/ChatList/mock';
 import { ROUTERS } from 'router';
-import StyledChats from './style';
+import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
+import { getChatList } from 'store/chats/selectors';
+import { createChat, removeChat, setChats } from 'store/chats/actions';
+import { removeMessagesByChatId } from 'store/messages/actions';
+import { StyledChats, StyledDeleteChatButton } from './style';
 
-interface IProps {
-  messageList: IMessageList;
-}
+const Chats = () => {
+  const chats = useSelector(getChatList);
+  const dispatch = useDispatch();
 
-const Chats: React.FC<IProps> = () => {
-  const [messageList, setMessageList] = useState([]);
+  const onCreate = useCallback(() => {
+    dispatch(
+      createChat({
+        id: nanoid(),
+        name: 'chatName'
+      })
+    );
+  }, []);
 
-  const robotMessage =
-    'Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!';
-
-  const addMessage = useCallback(
-    (message: IMessage) => setMessageList(state => [...state, message as never]),
-    []
-  );
+  const onDelete = (chatId: number) => {
+    dispatch(removeChat(+chatId));
+    dispatch(removeMessagesByChatId(+chatId));
+  };
 
   useEffect(() => {
-    const lastMessage = messageList[messageList.length - 1];
-    const timerId = setTimeout(() => {
-      if (
-        (lastMessage as IMessage)?.isAuthorHuman === false &&
-        (lastMessage as IMessage)?.isRobot !== true
-      ) {
-        addMessage({
-          text: robotMessage,
-          isRobot: true,
-          isAuthorHuman: false
-        } as never);
-      }
-    }, 1500);
+    dispatch(setChats(ChartListMock));
+  }, []);
 
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [messageList, addMessage]);
+  // const [messageList, setMessageList] = useState([]);
+
+  // const robotMessage =
+  //   'Да\u00A0здравствуют роботы! Устроим свой Диснейленд с\u00A0Майнкрафтом и\u00A0роботессами!';
+
+  // const addMessage = useCallback(
+  //   (message: IMessage) => setMessageList(state => [...state, message as never]),
+  //   []
+  // );
+
+  // useEffect(() => {
+  //   const lastMessage = messageList[messageList.length - 1];
+  //   const timerId = setTimeout(() => {
+  //     if (
+  //       (lastMessage as IMessage)?.isAuthorHuman === false &&
+  //       (lastMessage as IMessage)?.isRobot !== true
+  //     ) {
+  //       addMessage({
+  //         text: robotMessage,
+  //         isRobot: true,
+  //         isAuthorHuman: false
+  //       } as never);
+  //     }
+  //   }, 1500);
+
+  //   return () => {
+  //     clearTimeout(timerId);
+  //   };
+  // }, [messageList, addMessage]);
 
   return (
     <StyledChats>
-      <ChartList list={ChartListMock} />
+      <ChartList list={chats} onDelete={onDelete as () => void} />
+      <StyledDeleteChatButton onClick={onCreate}>Создать чат</StyledDeleteChatButton>
       <Switch>
         <Route path={`${ROUTERS.CHATS}/:chartId`}>
-          <Messages messageList={messageList as never} addMessage={addMessage} />
+          <Messages />
         </Route>
       </Switch>
     </StyledChats>

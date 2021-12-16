@@ -1,19 +1,19 @@
 const ChartListMock = [
   {
     id: 0,
-    name: `Chart 1`
+    name: `Chart_1`
   },
   {
     id: 1,
-    name: `Chart 2`
+    name: `Chart_2`
   },
   {
     id: 2,
-    name: `Chart 3`
+    name: `Chart_3`
   },
   {
     id: 3,
-    name: `Chart 4`
+    name: `Chart_4`
   }
 ];
 

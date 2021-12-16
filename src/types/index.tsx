@@ -1,6 +1,7 @@
 export interface IMessage {
+  id?: number | string;
   title?: string;
-  text: string;
+  text?: string;
   date?: string;
   author?: string;
   isAuthorHuman?: boolean;
@@ -13,4 +14,8 @@ export interface IMessageList {
 
 export interface IAddMessage {
   addMessage: (message: IMessage) => void;
+}
+
+export interface IMessageItem {
+  message: IMessage;
 }
