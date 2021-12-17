@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getChatList } from 'store/chats/selectors';
 import { createChat, removeChat, setChats } from 'store/chats/actions';
 import { removeMessagesByChatId } from 'store/messages/actions';
-import { StyledChats, StyledDeleteChatButton } from './style';
+import { StyledChats, StyledChatListWrapper, StyledNewChatButton } from './style';
 
 const Chats = () => {
   const chats = useSelector(getChatList);
@@ -66,8 +66,10 @@ const Chats = () => {
 
   return (
     <StyledChats>
-      <ChartList list={chats} onDelete={onDelete as () => void} />
-      <StyledDeleteChatButton onClick={onCreate}>Создать чат</StyledDeleteChatButton>
+      <StyledChatListWrapper>
+        <ChartList list={chats} onDelete={onDelete as () => void} />
+        <StyledNewChatButton onClick={onCreate}>Создать чат</StyledNewChatButton>
+      </StyledChatListWrapper>
       <Switch>
         <Route path={`${ROUTERS.CHATS}/:chartId`}>
           <Messages />

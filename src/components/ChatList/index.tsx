@@ -1,7 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import ChatItem from 'components/ChatItem';
-import StyledList from './style';
+import { StyledList, StyledDelChatButton, StyledDeleteIcon } from './style';
 
 interface IProps {
   onDelete: () => void;
@@ -17,9 +17,9 @@ const ChatList = ({ list, onDelete }: IProps) => {
       {list.map(item => (
         <ChatItem id={item.id.toString()} key={nanoid()}>
           {item.name}
-          <button type="button" onClick={onDelete}>
-            x
-          </button>
+          <StyledDelChatButton type="button" onClick={onDelete}>
+            <StyledDeleteIcon />
+          </StyledDelChatButton>
         </ChatItem>
       ))}
     </StyledList>
