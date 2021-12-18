@@ -4,7 +4,7 @@ import ChatItem from 'components/ChatItem';
 import { StyledList, StyledDelChatButton, StyledDeleteIcon } from './style';
 
 interface IProps {
-  onDelete: () => void;
+  onDelete: (chatId?: number) => void;
   list: {
     id: number;
     name: string;
@@ -17,7 +17,11 @@ const ChatList = ({ list, onDelete }: IProps) => {
       {list.map(item => (
         <ChatItem id={item.id.toString()} key={nanoid()}>
           {item.name}
-          <StyledDelChatButton type="button" onClick={onDelete}>
+          <StyledDelChatButton
+            type="button"
+            onClick={() => {
+              onDelete(item.id);
+            }}>
             <StyledDeleteIcon />
           </StyledDelChatButton>
         </ChatItem>
