@@ -25,9 +25,9 @@ const Chats = () => {
     );
   }, []);
 
-  const onDelete = (chatId: number) => {
-    dispatch(removeChat(+chatId));
-    dispatch(removeMessagesByChatId(+chatId));
+  const onDelete = (chatId: string) => {
+    dispatch(removeChat(chatId.toString()));
+    dispatch(removeMessagesByChatId(chatId.toString()));
   };
 
   useEffect(() => {

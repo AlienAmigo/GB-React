@@ -12,7 +12,7 @@ export const setChats = (chats: any) => ({
   payload: chats
 });
 
-export const removeChat = (chatId: number | string) => ({
+export const removeChat = (chatId: string) => ({
   type: REMOVE_CHAT,
   payload: chatId
 });

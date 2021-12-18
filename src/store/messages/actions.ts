@@ -11,7 +11,7 @@ export const createMessage = ({ message }: IMessageItem, chatId: number | string
   }
 });
 
-export const removeMessagesByChatId = (chatId: number) => ({
+export const removeMessagesByChatId = (chatId: number | string) => ({
   type: REMOVE_MESSAGE_BY_CHAT_ID,
   payload: chatId
 });
