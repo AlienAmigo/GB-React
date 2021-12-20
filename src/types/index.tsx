@@ -1,10 +1,6 @@
 export interface IMessage {
-  id?: number | string;
-  title?: string;
   text?: string;
-  date?: string;
   author?: string;
-  isAuthorHuman?: boolean;
   isRobot?: boolean;
 }
 

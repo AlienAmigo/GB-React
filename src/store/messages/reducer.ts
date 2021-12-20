@@ -1,3 +1,4 @@
+import { IMessageList, IMessage } from 'types';
 import { CREATE_MESSAGE, REMOVE_MESSAGE_BY_CHAT_ID } from './actions';
 
 const initialState = {
@@ -11,7 +12,7 @@ export const messagesReducer = (state = initialState, action: any) => {
 
       const newMessages = { ...(state.messages as any) };
 
-      newMessages[chatId] = [...(newMessages[chatId] || []), message];
+      newMessages[chatId.toString()] = [...(newMessages[chatId.toString()] || []), message];
 
       return {
         messages: newMessages

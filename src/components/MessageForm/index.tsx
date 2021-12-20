@@ -2,11 +2,8 @@ import React, { FormEvent, useState, useEffect, useRef } from 'react';
 import { IAddMessage } from 'types';
 import { StyledTextField, StyledFormGroup, StyledButton } from './style';
 
-const MessageForm = ({ addMessage }: IAddMessage) => {
+const MessageForm = ({ addMessage }: any) => {
   const [value, setValue] = useState('');
-
-  const isAuthorHuman = (): boolean =>
-    Boolean(Math.floor(Math.random() * (Math.floor(1) - Math.ceil(0) + 1)) + Math.ceil(0));
 
   const onSubmit = (ev: FormEvent) => {
     ev.preventDefault();
@@ -14,11 +11,7 @@ const MessageForm = ({ addMessage }: IAddMessage) => {
       return;
     }
     setValue('');
-    addMessage({
-      text: value,
-      isAuthorHuman: isAuthorHuman(),
-      date: ''
-    });
+    addMessage(value);
   };
 
   const onChange = (ev: React.ChangeEvent<HTMLInputElement>): void => {

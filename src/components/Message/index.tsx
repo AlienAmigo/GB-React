@@ -8,15 +8,11 @@ interface IProps {
 
 const Message = ({ message }: IProps) => {
   return (
-    <StyledListItem isRobot={message.isRobot}>
-      {message.title && <div className="message__title">{message.title}</div>}
+    <StyledListItem isRobot={message?.isRobot}>
       <div className="message__text">{message.text}</div>
-      {!message.isRobot && (
-        <div className="message__author">
-          {message.isAuthorHuman ? 'Неизвестный автор' : 'Сообщение от бота'}
-        </div>
-      )}
-      {message.date && !message.isRobot && <div className="message__date">{message.date}</div>}
+      <div className="message__author">
+        {!message?.isRobot ? 'Неизвестный автор' : 'Сообщение от бота'}
+      </div>
     </StyledListItem>
   );
 };

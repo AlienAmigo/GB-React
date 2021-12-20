@@ -5,14 +5,14 @@ import { hasChatsById } from 'store/chats/selectors';
 import { createMessage } from 'store/messages/actions';
 import MessageList from 'components/MessageList';
 import MessageForm from 'components/MessageForm';
-import { IMessageList, IAddMessage } from 'types';
+import { IMessageList, IMessage } from 'types';
 import { ROUTERS } from 'router';
 import ChartListMock from 'components/ChatList/mock';
 import { getChatMessagesById } from 'store/messages/selectors';
 import { MessagesBox } from 'components/AppWrapper/style';
 
 const Messages = () => {
-  const { chatId } = useParams<{ chatId: string }>();
+  const { chatId } = useParams<{ chatId: any }>();
 
   const dispatch = useDispatch();
   const messageList = useSelector(getChatMessagesById(chatId));
