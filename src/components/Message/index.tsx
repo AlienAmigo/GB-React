@@ -1,18 +1,20 @@
-import './style.scss';
+import React from 'react';
 import { IMessage } from 'types';
+import StyledListItem from './style';
 
 interface IProps {
-  message: IMessage
+  message: IMessage;
 }
 
-const Message = (props: IProps) => {
-
-  return <div className={`message ${props.message.isAnswer ? 'message--robot': ''}`}>
-    {props.message.title && <div className="message__title">{props.message.title}</div>}
-    <div className="message__text">{props.message.text}</div>
-    {!props.message.isAnswer && <div className="message__author">{props.message.isAuthorHuman ? 'Неизвестный автор' : 'Сообщение от бота'}</div>}
-    {props.message.date && !props.message.isAnswer && <div className="message__date">{props.message.date}</div>}
-  </div>
-}
+const Message = ({ message }: IProps) => {
+  return (
+    <StyledListItem isRobot={message?.isRobot}>
+      <div className="message__text">{message.text}</div>
+      <div className="message__author">
+        {!message?.isRobot ? 'Неизвестный автор' : 'Сообщение от бота'}
+      </div>
+    </StyledListItem>
+  );
+};
 
 export default Message;
